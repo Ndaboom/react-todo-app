@@ -130,7 +130,7 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git clone https://github.com/Ndaboom/math-magicians.git
+  git clone https://github.com/Ndaboom/react-todo-app.git
 ```
 
 ### Install
