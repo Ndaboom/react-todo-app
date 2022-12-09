@@ -1,8 +1,15 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/button-has-type */
 import React, { Component } from "react";
 
 class InputTodo extends Component {
   state = {
-    title: ""
+    title: ''
   };
 
   onChange = e => {

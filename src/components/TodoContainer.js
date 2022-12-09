@@ -1,3 +1,9 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable no-param-reassign */
 import React from 'react';
 import { v4 as uuidv4 } from "uuid";
 import Header from './Header';
