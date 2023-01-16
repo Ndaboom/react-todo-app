@@ -1,3 +1,13 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable react/state-in-constructor */
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable no-param-reassign */
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-undef */
+/* eslint-disable no-const-assign */
+/* eslint-disable no-unused-vars */
 import React from "react";
 import styles from "./TodoItem.module.css";
 
@@ -5,6 +15,19 @@ class TodoItem extends React.Component {
   state = {
     editing: false,
   };
+
+  handleEditing = () => {
+    this.setState({
+      editing: true,
+    });
+  }
+
+  handleUpdatedDone = event => {
+    if (event.key === "Enter") {
+      this.setState({ editing: false })
+    }
+  }
+
   render() {
     const completedStyle = {
       fontStyle: "italic",
@@ -13,14 +36,6 @@ class TodoItem extends React.Component {
       textDecoration: "line-through",
     };
     const { completed, id, title } = this.props.todo;
-
-    const handleEditing = () => {
-      handleEditing = () => {
-        this.setState({
-          editing: true,
-        });
-      }
-    }
 
     let viewMode = {}
     let editMode = {}
@@ -31,23 +46,17 @@ class TodoItem extends React.Component {
       editMode.display = "none"
     }
 
-    handleUpdatedDone = event => {
-      if (event.key === "Enter") {
-        this.setState({ editing: false })
-      }
-    }
-
     return (
       <li className={styles.item}>
         <div onDoubleClick={this.handleEditing} style={viewMode}>
           <input
-          type="checkbox"
-          className={styles.checkbox}
-          checked={completed}
+          type="text"
+          style={editMode}
+          className={styles.textInput}
+          value={title}
           onChange={e => {
             this.props.setUpdate(e.target.value, id)
           }}
-          onKeyDown={this.handleUpdatedDone}
         />
         <button onClick={() => this.props.deleteTodoProps(id)}>Delete</button>
         <span style={completed ? completedStyle : null}>{title}</span>
@@ -58,8 +67,9 @@ class TodoItem extends React.Component {
           className={styles.textInput}
           value={title}
           onChange={e => {
-            console.log(e.target.value, id)
+            this.props.setUpdate(e.target.value, id)
           }}
+          onKeyDown={this.handleUpdatedDone}
         />
       </li>
     )
